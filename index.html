@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Texas History Quest (4th Grade)</title>
+  <meta name="theme-color" content="#07080D" />
+  <meta name="description" content="Interactive 4th grade Texas History quiz — 20 levels, 10 questions each." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo"></div>
+      <div>
+        <div class="brand-title">Texas History Quest</div>
+        <div class="brand-sub">4th grade • 20 levels • 200 questions</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <button class="navlink" id="navHome">Home</button>
+      <button class="navlink" id="navResume">Resume</button>
+      <button class="navlink" id="navScore">Scorecard</button>
+      <button class="navlink" id="navReset">Reset</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="viewHome" class="panel">
+      <h1>Welcome</h1>
+      <p class="muted">Answer 10 questions per level. Get <strong>10/10</strong> to trigger the fun animation. At the end, you’ll get a full scorecard.</p>
+
+      <div class="panel-inner">
+        <div class="row">
+          <div class="grow">
+            <div class="label">Student name (optional)</div>
+            <input id="studentName" class="input" placeholder="Emma" />
+          </div>
+          <div class="grow">
+            <div class="label">Start level</div>
+            <select id="startLevel" class="input"></select>
+          </div>
+        </div>
+        <div class="row" style="margin-top:12px">
+          <button id="btnStart" class="btn">Start</button>
+          <button id="btnStartAt" class="btn secondary">Start at selected level</button>
+        </div>
+      </div>
+
+      <div class="panel-inner" style="margin-top:16px">
+        <h2 class="h2">Levels</h2>
+        <div id="levels" class="levels"></div>
+      </div>
+
+      <p class="muted" style="margin-top:14px">Images are pulled from reputable public sources and include credit links on each question.</p>
+    </section>
+
+    <section id="viewQuiz" class="panel" hidden>
+      <div class="row between">
+        <div>
+          <h1 id="quizTitle">Level</h1>
+          <div class="muted" id="quizMeta">—</div>
+        </div>
+        <div class="scorebox">
+          <div class="label">Score</div>
+          <div class="score" id="scoreNow">0/10</div>
+        </div>
+      </div>
+
+      <div class="panel-inner" style="margin-top:12px">
+        <div class="qwrap">
+          <div class="qimg">
+            <img id="qImg" alt="" />
+          </div>
+          <div class="qbody">
+            <div class="qnum" id="qNum">Question</div>
+            <div class="qtext" id="qText">—</div>
+            <div id="choices" class="choices"></div>
+
+            <div class="row" style="margin-top:12px">
+              <button id="btnNext" class="btn" disabled>Next</button>
+              <div class="muted" id="feedback"></div>
+            </div>
+
+            <details class="cite" style="margin-top:12px">
+              <summary>Image & source</summary>
+              <div class="small muted">Image credit: <a id="imgCredit" href="#" target="_blank" rel="noreferrer">source</a></div>
+              <div class="small muted">Question source: <a id="qSource" href="#" target="_blank" rel="noreferrer">source</a></div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="viewLevelResult" class="panel" hidden>
+      <h1 id="resultTitle">Level complete</h1>
+      <div class="panel-inner">
+        <div class="row between">
+          <div>
+            <div class="label">Level score</div>
+            <div class="big" id="levelScore">0/10</div>
+            <div class="muted" id="levelMessage"></div>
+          </div>
+          <div class="animStage">
+            <canvas id="anim" width="320" height="220"></canvas>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:12px">
+          <button id="btnReplay" class="btn secondary">Retry level</button>
+          <button id="btnContinue" class="btn">Next level</button>
+          <button id="btnGoHome" class="btn ghost">Home</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="viewScore" class="panel" hidden>
+      <h1>Scorecard</h1>
+      <div class="panel-inner">
+        <div class="row between">
+          <div>
+            <div class="label">Student</div>
+            <div class="value" id="scStudent">—</div>
+          </div>
+          <div>
+            <div class="label">Total</div>
+            <div class="big" id="scTotal">0/200</div>
+          </div>
+          <div>
+            <div class="label">Completed levels</div>
+            <div class="value" id="scDone">0/20</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-inner" style="margin-top:16px">
+        <h2 class="h2">Per-level scores</h2>
+        <div id="scLevels" class="levels"></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="muted">v0.1 • offline-friendly • saves progress locally • neon purple + teal</div>
+    </footer>
+  </main>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "Texas History Quest (4th Grade)",
+  "short_name": "TX History",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#07080D",
+  "theme_color": "#07080D",
+  "icons": []
+}
