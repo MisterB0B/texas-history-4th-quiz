@@ -33,6 +33,16 @@ body{
 }
 
 .brand{display:flex; gap:12px; align-items:center}
+.badge{
+  width:38px;
+  height:38px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:
+    0 0 0 3px rgba(177,76,255,.10),
+    0 0 24px rgba(35,255,215,.12);
+  object-fit: cover;
+}
 .logo{
   width:12px; height:12px; border-radius:999px;
   background: linear-gradient(180deg, var(--purple), var(--teal));
