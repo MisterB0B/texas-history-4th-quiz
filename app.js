@@ -273,9 +273,40 @@ $('#btnNext').addEventListener('click', ()=>{
   else renderQuestion();
 });
 
+function validateDataset(){
+  const levels = window.TX_QUIZ?.levels;
+  if (!Array.isArray(levels)) throw new Error('Missing quiz dataset.');
+  if (levels.length !== 20) throw new Error(`Dataset error: expected 20 levels, got ${levels.length}.`);
+  levels.forEach((lv,i)=>{
+    if (!Array.isArray(lv.questions) || lv.questions.length !== 10) {
+      throw new Error(`Dataset error: level ${i+1} should have 10 questions (has ${lv.questions?.length ?? 0}).`);
+    }
+    lv.questions.forEach((q,j)=>{
+      if (!q?.text || !Array.isArray(q.choices) || q.choices.length !== 4) {
+        throw new Error(`Dataset error: L${i+1} Q${j+1} must have text + 4 choices.`);
+      }
+      if (typeof q.answerIndex !== 'number' || q.answerIndex < 0 || q.answerIndex > 3) {
+        throw new Error(`Dataset error: L${i+1} Q${j+1} invalid answerIndex.`);
+      }
+      if (!q.image?.url || !q.image?.creditUrl) {
+        throw new Error(`Dataset error: L${i+1} Q${j+1} missing image url/creditUrl.`);
+      }
+      if (!q.source?.url) {
+        throw new Error(`Dataset error: L${i+1} Q${j+1} missing source url.`);
+      }
+    });
+  });
+}
+
 // init
 $('#studentName').value = getStudent();
 $('#studentName').addEventListener('input', ()=> setStudent($('#studentName').value));
 
-buildLevelButtons();
-show('viewHome');
+try {
+  validateDataset();
+  buildLevelButtons();
+  show('viewHome');
+} catch (e) {
+  alert(e.message + "\n\nThe app needs a complete 20×10 dataset. Try again after the next update.");
+  console.error(e);
+}
