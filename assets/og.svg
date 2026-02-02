@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Texas History Quest">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b14cff"/>
+      <stop offset="55%" stop-color="#23ffd7"/>
+      <stop offset="100%" stop-color="#ff4fd8"/>
+    </linearGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="12" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="#07080D"/>
+  <circle cx="260" cy="250" r="260" fill="#b14cff" opacity="0.14" filter="url(#glow)"/>
+  <circle cx="980" cy="220" r="280" fill="#23ffd7" opacity="0.10" filter="url(#glow)"/>
+
+  <text x="610" y="280" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="52" font-weight="900" fill="#EEF0FF">Texas History Quest</text>
+  <text x="610" y="338" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="24" font-weight="700" fill="#A7ADC6">4th Grade • 20 Levels • 200 Questions</text>
+
+  <rect x="330" y="380" width="540" height="10" rx="999" fill="url(#g)" filter="url(#glow)"/>
+
+  <text x="610" y="460" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="18" fill="#9aa8c7">Neon purple + teal theme</text>
+</svg>
